@@ -40,6 +40,30 @@ github "jkpang/PPBadgeView" ~> 3.0.0
 carthage update --platform iOS
 ```
 
+### 4.Swift Package Manager:
+在 Xcode 中选择 `File > Add Packages...`, 输入仓库地址, 然后选择需要的 library:
+In Xcode, choose `File > Add Packages...`, enter the repository URL, then pick the library you need:
+
+* Objective-C : `PPBadgeView`   then `#import <PPBadgeView/PPBadgeView.h>`
+* Swift :       `PPBadgeViewSwift` then `import PPBadgeViewSwift`
+
+或者在 `Package.swift` 中声明依赖 / Or declare the dependency in your `Package.swift`:
+```swift
+dependencies: [
+    .package(url: "https://github.com/jkpang/PPBadgeView.git", from: "3.1.0")
+],
+targets: [
+    .target(
+        name: "YourTarget",
+        dependencies: [
+            .product(name: "PPBadgeViewSwift", package: "PPBadgeView") // or "PPBadgeView" for Objective-C
+        ]
+    )
+]
+```
+注意: Swift Package Manager 支持的最低版本为 iOS 9.0
+Note: The minimum deployment target for Swift Package Manager is iOS 9.0
+
 ## Usage 使用方法
 ##### 1. Objective-C :
 ```objc
